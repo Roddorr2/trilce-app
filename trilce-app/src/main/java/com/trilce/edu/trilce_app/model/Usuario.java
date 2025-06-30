@@ -16,13 +16,13 @@ public class Usuario {
     private String correo;
     private String dni;
     @ManyToOne
-    @JoinColumn(name = "id_grado")
+    @JoinColumn(name = "id_grado", referencedColumnName = "id")
     private Grado grado;
     @ManyToOne
-    @JoinColumn(name = "id_seccion")
+    @JoinColumn(name = "id_seccion", referencedColumnName = "id")
     private Seccion seccion;
     @ManyToOne
-    @JoinColumn(name = "id_tipo_usuario")
+    @JoinColumn(name = "id_tipo_usuario", referencedColumnName = "id")
     private TipoUsuario tipoUsuario;
 
     public Usuario() {
