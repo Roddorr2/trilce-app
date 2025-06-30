@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Editar Usuario</title>
+  </head>
+  <body>
+    <h1>Editar Usuario</h1>
+    <form
+      th:action="@{'/usuarios/' + ${usuario.id}}"
+      th:object="${usuario}"
+      method="post">
+      <label>Nombres:</label>
+      <input type="text" th:field="*{nombres}" required /><br />
+
+      <label>Correo:</label>
+      <input type="email" th:field="*{correo}" required /><br />
+
+      <label>DNI:</label>
+      <input type="text" th:field="*{dni}" required /><br />
+
+      <label>Grado:</label>
+      <select th:field="*{grado}" required>
+        <option
+          th:each="grado : ${grados}"
+          th:value="${grado.id}"
+          th:text="${grado.nombre}"></option></select
+      ><br />
+
+      <label>Sección:</label>
+      <select th:field="*{seccion}" required>
+        <option
+          th:each="seccion : ${secciones}"
+          th:value="${seccion.id}"
+          th:text="${seccion.nombre}"></option></select
+      ><br />
+
+      <label>Tipo de Usuario:</label>
+      <select th:field="*{tipoUsuario}" required>
+        <option
+          th:each="tipo : ${tipos}"
+          th:value="${tipo.id}"
+          th:text="${tipo.nombre}"></option></select
+      ><br />
+
+      <button type="submit">Actualizar</button>
+      <a href="/usuarios">Cancelar</a>
+    </form>
+  </body>
+</html>

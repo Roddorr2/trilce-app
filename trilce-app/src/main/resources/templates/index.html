@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Panel Principal</title>
+  </head>
+  <body>
+    <h1>Bienvenido al Sistema Trilce</h1>
+
+    <ul>
+      <li><a th:href="@{/usuarios}">Gestión de Usuarios</a></li>
+      <li><a th:href="@{/sesiones}">Sesiones de Laboratorio</a></li>
+      <li><a th:href="@{/actividades}">Gestión de Actividades</a></li>
+    </ul>
+  </body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Lista de Usuarios</title>
+    <link rel="stylesheet" href="/css/usuarios.css" />
+  </head>
+  <body>
+    <h1>Lista de Usuarios</h1>
+    <a th:href="@{/usuarios/crear}">+ Nuevo Usuario</a>
+    <table>
+      <thead>
+        <tr>
+          <th>Nombres</th>
+          <th>Correo</th>
+          <th>DNI</th>
+          <th>Grado</th>
+          <th>Sección</th>
+          <th>Tipo</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="usuario : ${usuarios}">
+          <td th:text="${usuario.nombres}"></td>
+          <td th:text="${usuario.correo}"></td>
+          <td th:text="${usuario.dni}"></td>
+          <td th:text="${usuario.grado?.nombre}"></td>
+          <td th:text="${usuario.seccion?.nombre}"></td>
+          <td th:text="${usuario.tipoUsuario?.nombre}"></td>
+          <td>
+            <a th:href="@{/usuarios/editar/{id}(id=${usuario.id})}">Editar</a>
+            <a
+              th:href="@{/usuarios/eliminar/{id}(id=${usuario.id})}"
+              onclick="return confirm('¿Seguro que deseas eliminar?')"
+              >Eliminar</a
+            >
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <script src="/js/usuarios.js"></script>
+  </body>
+</html>

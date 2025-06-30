@@ -1,0 +1,62 @@
+const modal = document.getElementById("usuarioModal");
+const form = document.getElementById("formUsuario");
+
+function abrirModal() {
+  form.reset();
+  document.getElementById("idUsuario").value = "";
+  document.getElementById("tituloModal").textContent = "Nuevo Usuario";
+  modal.style.display = "block";
+}
+
+function cerrarModal() {
+  modal.style.display = "none";
+}
+
+form.addEventListener("submit", async function (e) {
+  e.preventDefault();
+
+  const id = document.getElementById("idUsuario").value;
+  const url = id ? `/usuarios/${id}` : "/usuarios";
+  const method = id ? "PUT" : "POST";
+
+  const usuario = {
+    nombres: form.nombres.value,
+    correo: form.correo.value,
+    dni: form.dni.value,
+    grado: { id: form.grado.value },
+    seccion: { id: form.seccion.value },
+    tipo: { id: form.tipo.value },
+  };
+
+  await fetch(url, {
+    method: method,
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(usuario),
+  });
+
+  location.reload();
+});
+
+function editarUsuario(id) {
+  fetch(`/usuarios/${id}`)
+    .then((res) => res.json())
+    .then((data) => {
+      document.getElementById("idUsuario").value = data.id;
+      form.nombres.value = data.nombres;
+      form.correo.value = data.correo;
+      form.dni.value = data.dni;
+      form.grado.value = data.grado.id;
+      form.seccion.value = data.seccion.id;
+      form.tipo.value = data.tipo.id;
+      document.getElementById("tituloModal").textContent = "Editar Usuario";
+      modal.style.display = "block";
+    });
+}
+
+function eliminarUsuario(id) {
+  if (confirm("¿Seguro que deseas eliminar este usuario?")) {
+    fetch(`/usuarios/${id}`, { method: "DELETE" }).then(() =>
+      location.reload()
+    );
+  }
+}
