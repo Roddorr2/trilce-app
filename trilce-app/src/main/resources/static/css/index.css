@@ -1,6 +1,6 @@
 :root {
-  --trilce-orange: #ff5722;
-  --trilce-dark: #2c2c2c;
+  --trilce-orange: #ff5722; 
+  --trilce-dark: #333;
   --background: #f9f9f9;
   --white: #ffffff;
 }
@@ -16,9 +16,10 @@ body {
   background-color: var(--background);
   color: var(--trilce-dark);
 }
+
 .navbar {
   background-color: var(--white);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .nav-container {
@@ -70,68 +71,14 @@ body {
 }
 
 .main-content {
-  padding: 2rem;
+  padding: 4rem 2rem;
+  text-align: center;
 }
 
-.usuarios-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1.5rem;
-}
-
-.usuarios-header h1 {
-  font-size: 2rem;
+.main-content h1 {
+  font-size: 2.75rem;
   color: var(--trilce-dark);
-}
-
-.btn {
-  background-color: var(--trilce-orange);
-  color: var(--white);
-  border: none;
-  padding: 0.5rem 1rem;
-  font-weight: 600;
-  text-decoration: none;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
-}
-
-.btn:hover {
-  background-color: #e24e1e;
-}
-
-.btn-edit {
-  background-color: #2196f3;
-}
-
-.btn-edit:hover {
-  background-color: #1976d2;
-}
-
-.btn-delete {
-  background-color: #f44336;
-}
-
-.btn-delete:hover {
-  background-color: #d32f2f;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  background-color: var(--white);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-}
-
-th, td {
-  border: 1px solid #e0e0e0;
-  padding: 0.75em;
-  text-align: left;
-  font-size: 0.95rem;
-}
-
-th {
-  background-color: var(--trilce-orange);
-  color: var(--white);
-  font-weight: 600;
+  border-bottom: 4px solid var(--trilce-orange);
+  display: inline-block;
+  padding-bottom: 0.5rem;
 }

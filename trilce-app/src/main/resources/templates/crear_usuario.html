@@ -1,47 +1,54 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
-    <title>Nuevo Usuario</title>
+    <title>Registrar Usuario</title>
+    <link rel="stylesheet" href="/css/usuarios.css" />
+    <link rel="stylesheet" href="/css/formulario-usuarios.css" />
   </head>
   <body>
-    <h1>Registrar Usuario</h1>
-    <form th:action="@{/usuarios}" th:object="${usuario}" method="post">
-      <label>Nombres:</label>
-      <input type="text" th:field="*{nombres}" required /><br />
+    <header class="navbar">
+      <nav class="nav-container">
+        <div class="nav-logo">
+          <img src="/img/logo-trilce.png" alt="Logo Trilce" />
+        </div>
+        <ul class="nav-links">
+          <li><a th:href="@{/}">Inicio</a></li>
+          <li><a th:href="@{/usuarios}">Usuarios</a></li>
+        </ul>
+      </nav>
+    </header>
 
-      <label>Correo:</label>
-      <input type="email" th:field="*{correo}" required /><br />
+    <main class="main-content">
+      <h1>Registrar Usuario</h1>
+      <form th:action="@{/usuarios}" th:object="${usuario}" method="post">
+        <label>Nombres:</label>
+        <input type="text" th:field="*{nombres}" required />
 
-      <label>DNI:</label>
-      <input type="text" th:field="*{dni}" required /><br />
+        <label>Correo:</label>
+        <input type="email" th:field="*{correo}" required />
 
-      <label>Grado:</label>
-      <select th:field="*{grado}" required>
-        <option
-          th:each="grado : ${grados}"
-          th:value="${grado}"
-          th:text="${grado.nombre}"></option></select
-      ><br />
+        <label>DNI:</label>
+        <input type="text" th:field="*{dni}" required />
 
-      <label>Sección:</label>
-      <select th:field="*{seccion}" required>
-        <option
-          th:each="seccion : ${secciones}"
-          th:value="${seccion}"
-          th:text="${seccion.nombre}"></option></select
-      ><br />
+        <label>Grado:</label>
+        <select th:field="*{grado}" required>
+          <option th:each="grado : ${grados}" th:value="${grado}" th:text="${grado.nombre}"></option>
+        </select>
 
-      <label>Tipo de Usuario:</label>
-      <select th:field="*{tipoUsuario}" required>
-        <option
-          th:each="tipo : ${tipos}"
-          th:value="${tipo}"
-          th:text="${tipo.nombre}"></option></select
-      ><br />
+        <label>Sección:</label>
+        <select th:field="*{seccion}" required>
+          <option th:each="seccion : ${secciones}" th:value="${seccion}" th:text="${seccion.nombre}"></option>
+        </select>
 
-      <button type="submit">Guardar</button>
-      <a href="/usuarios">Cancelar</a>
-    </form>
+        <label>Tipo de Usuario:</label>
+        <select th:field="*{tipoUsuario}" required>
+          <option th:each="tipo : ${tipos}" th:value="${tipo}" th:text="${tipo.nombre}"></option>
+        </select>
+
+        <button type="submit">Guardar</button>
+        <a th:href="@{/usuarios}">Cancelar</a>
+      </form>
+    </main>
   </body>
 </html>

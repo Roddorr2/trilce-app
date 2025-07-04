@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lista de Actividades</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <h1>Actividades Registradas</h1>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Actividad</th>
+                <th>Entrada del Usuario</th>
+                <th>Respuesta</th>
+                <th>Categoría</th>
+                <th>Sesión (Fecha y Hora)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="actividad, iterStat : ${actividades}">
+                <td th:text="${iterStat.count}"></td>
+                <td th:text="${actividad.actividad}"></td>
+                <td th:text="${actividad.entradaUsuario}"></td>
+                <td th:text="${actividad.respuesta}"></td>
+                <td th:text="${actividad.categoria.nombre}"></td>
+                <td th:text="${actividad.sesionLaboratorio.fechaHora}"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
