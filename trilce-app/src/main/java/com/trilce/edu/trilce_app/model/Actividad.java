@@ -19,6 +19,9 @@ public class Actividad {
     private String entradaUsuario;
     private String respuesta;
     @ManyToOne
+    @JoinColumn(name = "usuario_id")
+    private Usuario usuario;
+    @ManyToOne
     @JoinColumn(name = "id_categoria", referencedColumnName = "id")
     private Categoria categoria;
     @ManyToOne
@@ -38,7 +41,13 @@ public class Actividad {
         this.categoria = categoria;
         this.sesionLaboratorio = sesionLaboratorio;
     }
+    public Usuario getUsuario() {
+    return usuario;
+}
 
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
     public int getId() {
         return id;
     }
