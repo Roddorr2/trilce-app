@@ -1,0 +1,127 @@
+@import url('usuarios.css'); 
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f6f8;
+    margin: 0;
+    padding: 0;
+}
+
+.contenedor {
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #2c3e50;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+thead {
+    background-color: #34495e;
+    color: white;
+}
+
+th, td {
+    text-align: center;
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+.btn-agregar, .btn-ver {
+    padding: 8px 15px;
+    margin: 3px;
+    border: none;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+}
+
+.btn-agregar {
+    background-color: #27ae60;
+    color: white;
+}
+
+.btn-agregar:hover {
+    background-color: #219150;
+}
+
+.btn-ver {
+    background-color: #2980b9;
+    color: white;
+}
+
+.btn-ver:hover {
+    background-color: #1f6391;
+}
+
+/* ✅ NUEVO: Estilo para el formulario rápido de sesión */
+.form-rapido {
+    margin: 2rem 0;
+    padding: 1rem 2rem;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+.form-rapido h2 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #2c3e50;
+    font-size: 1.3rem;
+}
+
+.form-inline {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+}
+
+.form-inline label {
+    font-weight: bold;
+    color: #34495e;
+}
+
+.form-inline input,
+.form-inline select {
+    padding: 0.5rem 0.8rem;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    flex-grow: 1;
+    min-width: 200px;
+}
+
+.btn-registrar {
+    padding: 0.5rem 1.2rem;
+    background-color: #8e44ad;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-registrar:hover {
+    background-color: #732d91;
+}

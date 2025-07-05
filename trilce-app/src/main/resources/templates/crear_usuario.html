@@ -33,21 +33,36 @@
 
         <label>Grado:</label>
         <select th:field="*{grado}" required>
-          <option th:each="grado : ${grados}" th:value="${grado}" th:text="${grado.nombre}"></option>
-        </select>
+        <option value="">-- Selecciona un grado --</option>
+        <option th:each="grado : ${grados}"
+                th:value="${grado.id}" 
+                th:text="${grado.nombre}">
+        </option>
+      </select>
+
 
         <label>Sección:</label>
-        <select th:field="*{seccion}" required>
-          <option th:each="seccion : ${secciones}" th:value="${seccion}" th:text="${seccion.nombre}"></option>
-        </select>
+    <select th:field="*{seccion}" required>
+      <option value="">-- Selecciona una sección --</option>
+      <option th:each="seccion : ${secciones}" 
+              th:value="${seccion.id}" 
+              th:text="${seccion.nombre}">
+      </option>
+    </select>
+
 
         <label>Tipo de Usuario:</label>
         <select th:field="*{tipoUsuario}" required>
-          <option th:each="tipo : ${tipos}" th:value="${tipo}" th:text="${tipo.nombre}"></option>
-        </select>
+        <option value="">-- Selecciona un tipo --</option>
+        <option th:each="tipo : ${tipos}" 
+                th:value="${tipo.id}" 
+                th:text="${tipo.nombre}">
+        </option>
+      </select>
 
-        <button type="submit">Guardar</button>
-        <a th:href="@{/usuarios}">Cancelar</a>
+
+        <button type="submit" class="btn-registrar">Guardar</button>
+        <a th:href="@{/usuarios}" class="btn-ver">Cancelar</a>
       </form>
     </main>
   </body>
