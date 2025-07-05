@@ -1,44 +1,61 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <title>Lista de Usuarios</title>
     <link rel="stylesheet" href="/css/usuarios.css" />
   </head>
   <body>
-    <h1>Lista de Usuarios</h1>
-    <a th:href="@{/usuarios/crear}">+ Nuevo Usuario</a>
-    <table>
-      <thead>
-        <tr>
-          <th>Nombres</th>
-          <th>Correo</th>
-          <th>DNI</th>
-          <th>Grado</th>
-          <th>Sección</th>
-          <th>Tipo</th>
-          <th>Acciones</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr th:each="usuario : ${usuarios}">
-          <td th:text="${usuario.nombres}"></td>
-          <td th:text="${usuario.correo}"></td>
-          <td th:text="${usuario.dni}"></td>
-          <td th:text="${usuario.grado?.nombre}"></td>
-          <td th:text="${usuario.seccion?.nombre}"></td>
-          <td th:text="${usuario.tipoUsuario?.nombre}"></td>
-          <td>
-            <a th:href="@{/usuarios/editar/{id}(id=${usuario.id})}">Editar</a>
-            <a
-              th:href="@{/usuarios/eliminar/{id}(id=${usuario.id})}"
-              onclick="return confirm('¿Seguro que deseas eliminar?')"
-              >Eliminar</a
-            >
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <header class="navbar">
+      <nav class="nav-container">
+        <div class="nav-logo">
+          <img src="/img/logo-trilce.png" alt="Logo Trilce" />
+        </div>
+        <ul class="nav-links">
+          <li><a th:href="@{/}">Inicio</a></li>
+          <li><a th:href="@{/usuarios}">Usuarios</a></li>
+          <li><a th:href="@{/sesiones}">Sesiones</a></li>
+          <li><a th:href="@{/actividades}">Actividades</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="main-content">
+      <div class="usuarios-header">
+        <h1>Lista de Usuarios</h1>
+        <a class="btn" th:href="@{/usuarios/crear}">+ Nuevo Usuario</a>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Nombres</th>
+            <th>Correo</th>
+            <th>DNI</th>
+            <th>Grado</th>
+            <th>Sección</th>
+            <th>Tipo</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="usuario : ${usuarios}">
+            <td th:text="${usuario.nombres}"></td>
+            <td th:text="${usuario.correo}"></td>
+            <td th:text="${usuario.dni}"></td>
+            <td th:text="${usuario.grado?.nombre}"></td>
+            <td th:text="${usuario.seccion?.nombre}"></td>
+            <td th:text="${usuario.tipoUsuario?.nombre}"></td>
+            <td>
+              <a class="btn btn-edit" th:href="@{/usuarios/editar/{id}(id=${usuario.id})}">Editar</a>
+              <a class="btn btn-delete" th:href="@{/usuarios/eliminar/{id}(id=${usuario.id})}"
+                 onclick="return confirm('¿Seguro que deseas eliminar?')">Eliminar</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </main>
+
     <script src="/js/usuarios.js"></script>
   </body>
 </html>

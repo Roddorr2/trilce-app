@@ -44,11 +44,11 @@ INSERT INTO sesion_participante (id_sesion, id_usuario) VALUES (2, 3);
 INSERT INTO sesion_participante (id_sesion, id_usuario) VALUES (3, 4);
 INSERT INTO sesion_participante (id_sesion, id_usuario) VALUES (4, 5);
 
-INSERT INTO Actividad (actividad, entrada_usuario, respuesta, id_categoria, id_sesion) VALUES ('Resolución', 'Entrada 1', 'Respuesta 1', 1, 1);
-INSERT INTO Actividad (actividad, entrada_usuario, respuesta, id_categoria, id_sesion) VALUES ('Análisis', 'Entrada 2', 'Respuesta 2', 2, 2);
-INSERT INTO Actividad (actividad, entrada_usuario, respuesta, id_categoria, id_sesion) VALUES ('Lectura', 'Entrada 3', 'Respuesta 3', 3, 3);
-INSERT INTO Actividad (actividad, entrada_usuario, respuesta, id_categoria, id_sesion) VALUES ('Comprensión', 'Entrada 4', 'Respuesta 4', 4, 4);
-INSERT INTO Actividad (actividad, entrada_usuario, respuesta, id_categoria, id_sesion) VALUES ('Síntesis', 'Entrada 5', 'Respuesta 5', 5, 5);
+INSERT INTO Actividad (actividad, entrada_usuario, respuesta, id_categoria, id_sesion, fecha_hora) VALUES ('Resolución', 'Entrada 1', 'Respuesta 1', 1, 1, CURRENT_TIMESTAMP);
+INSERT INTO Actividad (actividad, entrada_usuario, respuesta, id_categoria, id_sesion, fecha_hora) VALUES ('Análisis', 'Entrada 2', 'Respuesta 2', 2, 2, CURRENT_TIMESTAMP);
+INSERT INTO Actividad (actividad, entrada_usuario, respuesta, id_categoria, id_sesion, fecha_hora) VALUES ('Lectura', 'Entrada 3', 'Respuesta 3', 3, 3, CURRENT_TIMESTAMP);
+INSERT INTO Actividad (actividad, entrada_usuario, respuesta, id_categoria, id_sesion, fecha_hora) VALUES ('Comprensión', 'Entrada 4', 'Respuesta 4', 4, 4, CURRENT_TIMESTAMP);
+INSERT INTO Actividad (actividad, entrada_usuario, respuesta, id_categoria, id_sesion, fecha_hora) VALUES ('Síntesis', 'Entrada 5', 'Respuesta 5', 5, 5, CURRENT_TIMESTAMP);
 
 INSERT INTO Documento (nombre_archivo, texto_extraido, id_actividad) VALUES ('archivo1.pdf', 'Texto extraído 1', 1);
 INSERT INTO Documento (nombre_archivo, texto_extraido, id_actividad) VALUES ('archivo2.pdf', 'Texto extraído 2', 2);

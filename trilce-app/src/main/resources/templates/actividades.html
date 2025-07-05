@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Detalle de Actividades</title>
+        <link rel="stylesheet" href="/css/usuarios.css" />
+</head>
+<body>
+        <header class="navbar">
+      <nav class="nav-container">
+        <div class="nav-logo">
+          <img src="/img/logo-trilce.png" alt="Logo Trilce" />
+        </div>
+        <ul class="nav-links">
+          <li><a th:href="@{/}">Inicio</a></li>
+          <li><a th:href="@{/usuarios}">Usuarios</a></li>
+          <li><a th:href="@{/sesiones}">Sesiones</a></li>
+          <li><a th:href="@{/actividades}">Actividades</a></li>
+        </ul>
+      </nav>
+    </header>
+
+  <h1>Detalle de Actividades</h1>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Actividad</th>
+        <th>Entrada Usuario</th>
+        <th>Fecha Hora</th>
+        <th>Respuesta</th>
+        <th>Categoría</th>
+        <th>Pregunta</th>
+        <th>Respuesta Correcta</th>
+        <th>Tipo Pregunta</th>
+        <th>Comentario</th>
+        <th>Puntaje</th>
+        <th>Nombre Archivo</th>
+        <th>Texto Extraído</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="fila : ${datosActividades}">
+        <td th:text="${fila.actividad}">actividad</td>
+        <td th:text="${fila.entradaUsuario}">entradaUsuario</td>
+        <td th:text="${#temporals.format(fila.fechaHora, 'yyyy-MM-dd HH:mm')}">fechaHora</td>
+        <td th:text="${fila.respuesta}">respuesta</td>
+        <td th:text="${fila.nombreCategoria}">categoria</td>
+        <td th:text="${fila.pregunta}">pregunta</td>
+        <td th:text="${fila.respuestaCorrecta}">respuestaCorrecta</td>
+        <td th:text="${fila.tipoPregunta}">tipoPregunta</td>
+        <td th:text="${fila.comentario}">comentario</td>
+        <td th:text="${fila.puntaje}">puntaje</td>
+        <td th:text="${fila.nombreArchivo}">archivo</td>
+        <td th:text="${fila.textoExtraido}">texto</td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>

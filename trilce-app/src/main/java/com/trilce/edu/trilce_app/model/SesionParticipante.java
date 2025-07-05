@@ -1,58 +1,38 @@
 package com.trilce.edu.trilce_app.model;
-
-import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.MapsId;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "sesion_participante")
 public class SesionParticipante {
 
-    @EmbeddedId
-    private SesionParticipanteId id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @ManyToOne
-    @MapsId("sesionLaboratorioId")
     @JoinColumn(name = "id_sesion")
     private SesionLaboratorio sesion;
 
     @ManyToOne
-    @MapsId("usuarioId")
     @JoinColumn(name = "id_usuario")
     private Usuario usuario;
 
-    public SesionParticipante() {}
+    // Getters y Setters
+    public Long getId() { return id; }
 
-    public SesionParticipante(SesionLaboratorio sesion, Usuario usuario) {
-        this.sesion = sesion;
-        this.usuario = usuario;
-        this.id = new SesionParticipanteId(sesion.getId(), usuario.getId());
-    }
+    public void setId(Long id) { this.id = id; }
 
-    public SesionParticipanteId getId() {
-        return id;
-    }
+    public SesionLaboratorio getSesion() { return sesion; }
 
-    public void setId(SesionParticipanteId id) {
-        this.id = id;
-    }
+    public void setSesion(SesionLaboratorio sesion) { this.sesion = sesion; }
 
-    public SesionLaboratorio getSesion() {
-        return sesion;
-    }
+    public Usuario getUsuario() { return usuario; }
 
-    public void setSesion(SesionLaboratorio sesion) {
-        this.sesion = sesion;
-    }
-
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
-
-    
+    public void setUsuario(Usuario usuario) { this.usuario = usuario; }
 }

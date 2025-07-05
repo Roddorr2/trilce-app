@@ -1,10 +1,15 @@
 package com.trilce.edu.trilce_app.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.trilce.edu.trilce_app.model.SesionParticipante;
-import com.trilce.edu.trilce_app.model.SesionParticipanteId;
 
-public interface SesionPartRepository extends JpaRepository<SesionParticipante, SesionParticipanteId> {
+public interface SesionPartRepository extends JpaRepository<SesionParticipante, Integer> {
 
 }

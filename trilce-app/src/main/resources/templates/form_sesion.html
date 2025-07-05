@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Formulario de Sesión</title>
+      <link rel="stylesheet" href="/css/usuarios.css" />
+  <link rel="stylesheet" href="/css/formulario-usuarios.css" />
+</head>
+<body>
+   <header class="navbar">
+      <nav class="nav-container">
+        <div class="nav-logo">
+          <img src="/img/logo-trilce.png" alt="Logo Trilce" />
+        </div>
+        <ul class="nav-links">
+          <li><a th:href="@{/sesiones}">Regresar</a></li>
+        </ul>
+      </nav>
+    </header>
+
+  <main class="main-content">
+    <h1 th:text="${sesion.id != null} ? 'Editar Sesión' : 'Nueva Sesión'">Formulario</h1>
+
+    <form th:action="@{/sesiones}" th:object="${sesion}" method="post">
+      <input type="hidden" th:field="*{id}" />
+
+      <label for="fechaHora">Fecha y hora:</label>
+      <input type="datetime-local" id="fechaHora" th:field="*{fechaHora}" required />
+
+      <label for="usuarioIds">Seleccionar Participantes:</label>
+      <select multiple name="usuarioIds" id="usuarioIds">
+        <option th:each="usuario : ${usuarios}" th:value="${usuario.id}" th:text="${usuario.nombres}"></option>
+      </select>
+      <p style="font-size: 0.9rem; color: #666; margin-top: 5px;">Usa Ctrl (o Cmd) + clic para seleccionar varios.</p>
+
+      <button type="submit">Guardar</button>
+    </form>
+  </main>
+
+</body>
+</html>

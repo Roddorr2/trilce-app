@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Sesiones de Laboratorio</title>
+    <link rel="stylesheet" href="/css/sesiones.css" />
+  </head>
+  <body>
+    <header class="navbar">
+      <nav class="nav-container">
+        <div class="nav-logo">
+          <a th:href="@{/}">
+            <img src="/img/logo-trilce.png" alt="Logo Trilce" />
+          </a>
+        </div>
+        <ul class="nav-links">
+          <li><a th:href="@{/}">Inicio</a></li>
+          <li><a th:href="@{/usuarios}">Usuarios</a></li>
+          <li><a th:href="@{/sesiones}">Sesiones</a></li>
+          <li><a th:href="@{/actividades}">Actividades</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="main-content">
+      <h1>Sesiones de Laboratorio</h1>
+
+      <!-- ✅ Formulario de Registro Rápido -->
+      <section class="form-rapido">
+        <h2>Registrar Sesión Rápida</h2>
+        <form
+          th:action="@{/sesiones/registrar}"
+          method="post"
+          class="form-inline">
+          <label for="fechaHora">Fecha y hora:</label>
+          <input
+            type="datetime-local"
+            id="fechaHora"
+            name="fechaHora"
+            required />
+
+          <label for="idUsuario">Alumno:</label>
+          <select name="idUsuario" id="idUsuario" required>
+            <option value="" disabled selected>Seleccione un alumno</option>
+            <option
+              th:each="alumno : ${alumnos}"
+              th:value="${alumno.id}"
+              th:text="${alumno.nombres}"></option>
+          </select>
+
+          <button type="submit" class="btn-registrar">Registrar</button>
+        </form>
+      </section>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Fecha</th>
+            <th>Participantes</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="sesion : ${sesiones}">
+            <td
+              th:text="${#temporals.format(sesion.fechaHora, 'yyyy-MM-dd HH:mm')}">
+              Fecha
+            </td>
+
+            <td>
+              <ul th:if="${participantesPorSesion[sesion.id] != null}">
+                <li
+                  th:each="p : ${participantesPorSesion[sesion.id]}"
+                  th:text="${p.usuario.nombres}">
+                  Participante
+                </li>
+              </ul>
+              <span th:if="${participantesPorSesion[sesion.id] == null}"
+                >Sin participantes</span
+              >
+            </td>
+
+            <td>
+              <button
+                th:href="@{/sesiones/editar/{id}(id=${sesion.id})}"
+                class="btn-editar">
+                Editar
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </main>
+  </body>
+</html>
