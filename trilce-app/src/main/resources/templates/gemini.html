@@ -1,52 +1,68 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
 <head>
-    <meta charset="UTF-8" />
-    <title>Laboratorio | TRILCE</title>
-    <link rel="stylesheet" href="/css/styles.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Laboratorio | TRILCE</title>
+  <link rel="stylesheet" href="/css/index.css" />
+  <link rel="stylesheet" href="/css/styles.css" />
 </head>
 <body>
+  <header class="navbar">
+    <nav class="nav-container">
+      <div class="nav-logo">
+        <img src="/img/logo-trilce.png" alt="Logo Trilce" />
+      </div>
+      <ul class="nav-links">
+        <li><a th:href="@{/}">Inicio</a></li>
+        <li><a th:href="@{/usuarios}">Usuarios</a></li>
+        <li><a th:href="@{/sesiones}">Sesiones</a></li>
+        <li><a th:href="@{/actividades}">Actividades</a></li>
+        <li><a th:href="@{/gemini}">Gemini</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="main-content">
     <h1><u>Laboratorio de Inteligencia Artificial</u></h1>
-    
-    <section>
-        <h2>1. Análisis de Documentos Educativos</h2>
-        <textarea id="textoExtraido" rows="10" cols="80" disabled></textarea>
-        <input type="file" id="fileInput" />
-        <button onclick="analizarDocumento()">Analizar Documento</button>
-        <input type="text" id="preguntaDoc" placeholder="Haz una pregunta sobre el texto" />
-        <button onclick="preguntarDocumento()">Preguntar a Gemini</button>
-        <div id="respuestaDoc"></div>
-    </section>
 
+    <section>
+      <h2>1. Análisis de Documentos Educativos</h2>
+      <textarea id="textoExtraido" disabled></textarea>
+      <input type="file" id="fileInput" />
+      <button onclick="analizarDocumento()">Analizar Documento</button>
+      <input type="text" id="preguntaDoc" placeholder="Haz una pregunta sobre el texto" />
+      <button onclick="preguntarDocumento()">Preguntar a Gemini</button>
+      <div class="response-container" id="respuestaDoc"></div>
+    </section>
     <hr />
 
     <section>
-        <h2>2. Explicaciones Auditivas</h2>
-        <input type="text" id="preguntaTTS" placeholder="Escribe tu duda" />
-        <button onclick="explicarYLeer()">Explicar y Leer</button>
-        <div id="respuestaTTS"></div>
+      <h2>2. Explicaciones Auditivas</h2>
+      <input type="text" id="preguntaTTS" placeholder="Escribe tu duda" />
+      <button onclick="explicarYLeer()">Explicar y Leer</button>
+      <div class="response-container" id="respuestaTTS"></div>
     </section>
 
     <hr />
-
     <section>
-        <h2>3. Generador de Ejercicios</h2>
-        <input type="text" id="tema" placeholder="Tema" />
-        <input type="text" id="grado" placeholder="Grado" />
-        <button onclick="generarEjercicios()">Generar Ejercicios</button>
-        <pre id="resultado-ejercicios"></pre>
+      <h2>3. Generador de Ejercicios</h2>
+      <input type="text" id="tema" placeholder="Tema" />
+      <input type="text" id="grado" placeholder="Grado" />
+      <button onclick="generarEjercicios()">Generar Ejercicios</button>
+      <pre id="resultado-ejercicios"></pre>
     </section>
+  </main>
 
-    <!-- Scripts -->
-    <script src="/config.js"></script>
-    <script src="/libs/pdf.js"></script>
-    <script>
-        pdfjsLib.GlobalWorkerOptions.workerSrc = "/libs/pdf.worker.js";
-    </script>
-    <script src="/libs/mammoth.browser.min.js"></script>
-    <script src="/js/gemini.js"></script>
-    <script src="/js/docxReader.js"></script>
-    <script src="/js/tts.js"></script>
-    <script src="/js/ejercicios.js"></script>
+  <script src="/config.js"></script>
+  <script src="/libs/pdf.js"></script>
+  <script>
+    pdfjsLib.GlobalWorkerOptions.workerSrc = "/libs/pdf.worker.js";
+  </script>
+  <script src="/libs/mammoth.browser.min.js"></script>
+  <script src="/js/gemini.js"></script>
+  <script src="/js/docxReader.js"></script>
+  <script src="/js/tts.js"></script>
+  <script src="/js/ejercicios.js"></script>
 </body>
 </html>
